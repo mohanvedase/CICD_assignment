@@ -1,6 +1,7 @@
 import os
 import requests
 from config import *
+import subprocess
 
 
 # providing the access token
@@ -37,5 +38,6 @@ if latest_commit_hash and latest_commit_hash != previous_commit_hash:
     with open(previous_commit_hash_file, 'w') as file:
         file.write(latest_commit_hash + '\n')
 
+    subprocess.run(["sudo","bash", "deployTheCode.sh"])
 else:
     print("No new commits or no update in index.html file.")
